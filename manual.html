@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Maths Machine</title>
+</head>
+<body>
+    <h1>Introduction:</h1>
+    <p>The Maths Machine - aka TMM is a simple analogue breadboard computer made by TheRebel0. This computer allows you to simulate physics using 2x potentiometers, allowing for the adjustment of position and velocity. 
+      This is an open soure device meaning that you can build it yourself via the schematic diagram or this tutorial. </p>
+    
+    <h2>Parts List:</h2>
+    <p>The required parts to build it are shown below.</p>
+    <p>2x Potentiometer.</p>
+    <p>1x 10uf capacitor (or any reasonable size, this will change the lag of the integrator)</p>
+    <p>2x 10k resistor (again, you can pick any size)</p>
+    <p>1x Arduino (any model, this does not impact performance)
+    <p>1x Breadboard</p>
+    <p>About 15 jumper wires (more than needed, this is for spares)</p>
+    
+    <h3>Things to consider:</h3>
+    <p>Be careful to add a 10k resistor between your Arduino 5V and potentiometer to avoid shorting it.</p>
+    <p>Make sure that the capacitor has a path to GND so that you can turn the potentiometer down.</p>
+
+    <h4>Building:</h4>
+    <p>Here is the wiring.</p>
+    <p>5V -> + rail on breadboard</p>
+    <p>GND -> - rail on breadboard</p>
+    <p>POT1 left leg -> 10k -> + rail</p>
+    <p>POT1 right leg -> - rail</p>
+    <p>POT1 middle leg -> + Capacitor</p>
+    
+    <p>POT2 left leg -> 10k -> + rail</p>
+    <p>POT2 right leg -> - rail</p>
+    <p>POT2 middle leg -> Analogue pin 1</p>
+    
+    <p>Cap + leg -> A0</p>
+    <p>Cap - leg -> - rail</p>
+    <p>Cap + leg -> 10k -> - rail</p>
+    
+</body>
+</html>
