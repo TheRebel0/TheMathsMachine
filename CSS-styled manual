@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Maths Machine</title>
+<style>
+  /* Reset and base styles */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 30px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Header styles */
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  header h1 {
+    font-size: 3em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+
+  /* Section styles */
+  section {
+    background-color: #fff;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+
+  /* Headings styles with hierarchy */
+  h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e1e1e1;
+    padding-bottom: 8px;
+    color: #34495e;
+  }
+
+  h3 {
+    font-size: 1.75em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #3b5998;
+  }
+
+  h4 {
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #4a69ad;
+  }
+
+  h5 {
+    font-size: 1.25em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #5d6d7e;
+  }
+
+  /* Paragraph styles */
+  p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+  }
+
+  /* List styles */
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+  }
+
+  ul li {
+    background: #eef2f3;
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  ul li:hover {
+    background: #d0e0e3;
+  }
+
+  /* List bullet icons custom */
+  ul li::before {
+    content: "•";
+    color: #3498db;
+    font-size: 1.5em;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Indent for nested lists */
+  ul ul {
+    padding-left: 20px;
+  }
+
+  /* Code snippets styling */
+  code {
+    background-color: #f1f1f1;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 1em;
+  }
+
+  /* Emphasized text */
+  strong {
+    font-weight: bold;
+  }
+
+  /* Notes and tips styling */
+  .note {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffeeba;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 6px;
+  }
+
+  /* Usage example box */
+  .usage-example {
+    background-color: #e2f0d9;
+    border-left: 5px solid #8bc34a;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 6px;
+  }
+
+  /* Responsive typography */
+  @media(max-width: 600px){
+    body {
+      padding: 15px;
+    }
+    header h1 {
+      font-size: 2em;
+    }
+    h2 {
+      font-size: 1.75em;
+    }
+    h3 {
+      font-size: 1.5em;
+    }
+    h4 {
+      font-size: 1.25em;
+    }
+    h5 {
+      font-size: 1em;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>The Maths Machine</h1>
+</header>
+
+<section>
+  <h2>Introduction</h2>
+  <p>
+    The Maths Machine (TMM) is a simple analogue breadboard computer created by TheRebel0. It allows you to simulate physics concepts using two potentiometers, enabling adjustment of position and velocity. 
+    This is an open-source device, so you can build it yourself using this tutorial.
+  </p>
+</section>
+
+<section>
+  <h2>Parts List</h2>
+  <ul>
+    <li>2x Potentiometers</li>
+    <li>1x 10µF capacitor (or any suitable size; affects the integrator's lag)</li>
+    <li>2x 10kΩ resistors (other values acceptable)</li>
+    <li>1x Arduino (any model; performance unaffected)</li>
+    <li>1x Breadboard</li>
+    <li>Approximately 15 jumper wires (more for spares)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Important Considerations</h2>
+  <ul>
+    <li>Include a 10kΩ resistor between the Arduino 5V pin and each potentiometer's left leg to prevent short circuits.</li>
+    <li>Ensure the capacitor has a proper connection to ground to enable turning the potentiometer down.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Building Instructions</h2>
+  <p>Here's the wiring setup:</p>
+  <ul>
+    <li>5V → + rail on breadboard</li>
+    <li>GND → - rail on breadboard</li>
+    <li>POT1 left leg → 10kΩ resistor → + rail</li>
+    <li>POT1 right leg → - rail</li>
+    <li>POT1 middle leg → + capacitor</li>
+    <li>POT2 left leg → 10kΩ resistor → + rail</li>
+    <li>POT2 right leg → - rail</li>
+    <li>POT2 middle leg → Analog input pin A1</li>
+    <li>Capacitor + leg → A0 (analog input)</li>
+    <li>Capacitor - leg → GND</li>
+    <li>Capacitor + leg → 10kΩ resistor → GND</li>
+  </ul>
+  <div class="note">
+    <strong>Notes:</strong>
+    <ul>
+      <li>Ensure a 10kΩ resistor is connected between the 5V supply and each potentiometer's left leg.</li>
+      <li>The capacitor's negative leg connects to GND.</li>
+      <li>The capacitor's positive leg connects to A0.</li>
+      <li>The potentiometers' middle pins connect to the capacitor and Arduino input.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Usage Example: Rocket Simulator</h2>
+  <div class="usage-example">
+    <p>
+      Plug the Arduino into a computer with the Arduino IDE installed. Paste the code from <code>code.cpp</code> into the window and click upload. 
+      Then, click "Tools" in the top menu and select "Serial Plotter." Twist a potentiometer—you should see one of the lines go up. 
+      Let's call the line for POT1 the velocity and POT2 the position. You can now visualize position and velocity, and simulate other phenomena like bouncing balls or meteorites.
+    </p>
+  </div>
+</section>
+</body>
+</html>
